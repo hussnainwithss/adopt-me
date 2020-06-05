@@ -1,0 +1,28 @@
+{
+  "name": "adopt-me",
+  "version": "1.0.0",
+  "description": "Pet adoption app using React.JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hussnainwithss/adopt-me.git"
+  },
+  "keywords": [
+    "React",
+    "JS",
+    "Javascript",
+    "Frontend"
+  ],
+  "author": "Hussnain Ahmad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hussnainwithss/adopt-me/issues"
+  },
+  "homepage": "https://github.com/hussnainwithss/adopt-me#readme",
+  "devDependencies": {
+    "prettier": "^2.0.5"
+  }
+}
