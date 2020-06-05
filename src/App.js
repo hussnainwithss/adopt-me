@@ -2,7 +2,6 @@ import React from "react";
 import { render } from "react-dom";
 import Logo from "./components/Logo/Logo.jsx";
 import Search from "./components/Search/Search.jsx";
-import Pet from "./components/Pet/Pet.jsx";
 
 const App = () => {
   return (
