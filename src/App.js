@@ -1,32 +1,19 @@
 import React from "react";
 import { render } from "react-dom";
-import logo from "./logo.jsx";
-import Pet from "./Pet.jsx";
+import Logo from "./components/Logo/Logo.jsx";
+import Search from "./components/Search/Search.jsx";
+import Pet from "./components/Pet/Pet.jsx";
 
 const App = () => {
-  return React.createElement("div", {}, [
-    React.createElement(logo, { key: 1 }),
-    React.createElement(Pet, {
-      key: 2,
-      name: "Luna",
-      animal: "Dog",
-      breed: "Havanese",
-    }),
-
-    React.createElement(Pet, {
-      key: 3,
-      name: "pepper",
-      animal: "Bird",
-      breed: "Cockatiel",
-    }),
-
-    React.createElement(Pet, {
-      key: 4,
-      name: "Doink",
-      animal: "Cat",
-      breed: "Mixed",
-    }),
-  ]);
+  return (
+    <div>
+      <Logo />
+      <Search />
+      {/* <Pet name={"Luna"} animal={"Dog"} breed={"Havanese"} />
+      <Pet name={"Pepper"} animal={"Bird"} breed={"Cockatiel"} />
+      <Pet name={"Doink"} animal={"Cat"} breed={"Mixed"} /> */}
+    </div>
+  );
 };
 
-render(React.createElement(App), document.getElementById("root"));
+render(<App />, document.getElementById("root"));
