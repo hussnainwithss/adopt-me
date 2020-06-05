@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
-import logo from "./logo";
-import Pet from "./Pet";
+import logo from "./logo.jsx";
+import Pet from "./Pet.jsx";
 
 const App = () => {
   return React.createElement("div", {}, [
