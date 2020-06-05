@@ -1,15 +1,7 @@
-const logo = () => {
-  //logo gets automatically rendered using css
-  return React.createElement("h1");
-};
-
-const Pet = ({ name, breed, animal }) => {
-  return React.createElement("div", {}, [
-    React.createElement("h1", { key: 5 }, name),
-    React.createElement("h2", { key: 6 }, animal),
-    React.createElement("h3", { key: 7 }, breed),
-  ]);
-};
+import React from "react";
+import { render } from "react-dom";
+import logo from "./logo";
+import Pet from "./Pet";
 
 const App = () => {
   return React.createElement("div", {}, [
@@ -37,4 +29,4 @@ const App = () => {
   ]);
 };
 
-ReactDOM.render(React.createElement(App), document.getElementById("root"));
+render(React.createElement(App), document.getElementById("root"));
