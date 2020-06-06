@@ -317,7 +317,10 @@ header {
   .search-params {
     width: 95%;
   }
-
+  .sadkitty {
+    width: 64px;
+    height: 64px;
+  }
   .search-params form {
     margin-bottom: 20px;
   }

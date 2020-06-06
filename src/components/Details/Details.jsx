@@ -72,7 +72,9 @@ class Details extends React.Component {
               <Link to="/" style={{ color: "#c03440" }}>
                 Click here!
               </Link>{" "}
-              to go back to home page or wait 5 seconds for redirection.
+              to go back to home page or{" "}
+              <span style={{ color: "#c03440" }}>wait 5 seconds</span> for
+              redirection.
             </h2>
           </div>
         </div>
