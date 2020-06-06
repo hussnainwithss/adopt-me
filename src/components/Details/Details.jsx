@@ -1,6 +1,8 @@
 import React from "react";
+import { Link, navigate } from "@reach/router";
 import pet from "@frontendmasters/pet";
 import Carousel from "../Carousel/Carousel.jsx";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary.jsx";
 import sadkitty from "./kitty.png"; //tell webpack/parcel this is image file
 
 class Details extends React.Component {
@@ -15,12 +17,12 @@ class Details extends React.Component {
   /** Shortcut for intializing state and
    * constructor equivalent to above commented code*/
   state = { loading: true, notFound: true };
-
   componentDidMount() {
     /** Added Mount life cycle method which fetchs data from Pet API using AJAX request
      * Runs only on Mount
      * Then never runs again
      */
+
     pet.animal(this.props.id).then(({ animal }) => {
       if (!animal) {
         this.setState({ notFound: true, loading: false });
@@ -40,6 +42,13 @@ class Details extends React.Component {
       });
     }, console.error);
   }
+
+  componentDidUpdate() {
+    if (this.state.notFound) {
+      setTimeout(() => navigate("/"), 5000);
+    }
+  }
+
   render() {
     if (this.state.loading & this.state.notFound) {
       return (
@@ -58,7 +67,13 @@ class Details extends React.Component {
         <div className="details">
           <div>
             <img src={sadkitty} alt="sad-kitty" className="sadkitty" />
-            <h2>Details not found.</h2>
+            <h2 style={{ color: "#c03440" }}>Details not found.</h2>
+            <h2>
+              <Link to="/" style={{ color: "#c03440" }}>
+                Click here!
+              </Link>{" "}
+              to go back to home page or wait 5 seconds for redirection.
+            </h2>
           </div>
         </div>
       );
@@ -74,7 +89,6 @@ class Details extends React.Component {
       colors,
       media,
     } = this.state;
-
     return (
       <div className="details">
         <div>
@@ -91,4 +105,11 @@ class Details extends React.Component {
   }
 }
 
-export default Details;
+export default function DetailsWithErrorBoundary(props) {
+  console.log("here");
+  return (
+    <ErrorBoundary>
+      <Details {...props} />
+    </ErrorBoundary>
+  );
+}

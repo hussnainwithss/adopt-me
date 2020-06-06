@@ -58,8 +58,8 @@ body {
 }
 .sadkitty {
   margin: 20px auto 0px;
-  max-width: 10%;
-  max-height: 10%;
+  max-width: 128px;
+  max-height: 128px;
 }
 .info {
   float: left;
