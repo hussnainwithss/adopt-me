@@ -1,9 +1,12 @@
 import React from "react";
+import { Router, Link } from "@reach/router";
 const logo = () => {
   //logo gets automatically rendered using css
   return (
     <div>
-      <h1>Adopt Me!</h1>
+      <header>
+        <Link to="/">Adopt Me!</Link>
+      </header>
     </div>
   );
 };

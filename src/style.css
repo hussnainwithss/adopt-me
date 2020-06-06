@@ -83,7 +83,7 @@ body {
   margin: 0;
   text-overflow: ellipsis;
 }
-
+header > a,
 #root > div > div {
   display: flex;
   justify-content: center;
@@ -118,10 +118,10 @@ header a {
 header {
   display: flex;
   align-content: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 1100px;
   margin: 0 auto;
-  padding: 20px 0px 0px 0px;
+  padding: 30px 0px;
 }
 
 .details p {
