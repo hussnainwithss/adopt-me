@@ -3,6 +3,7 @@ import { Link, navigate } from "@reach/router";
 import pet from "@frontendmasters/pet";
 import Carousel from "../Carousel/Carousel.jsx";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary.jsx";
+import ThemeContext from "../ThemeContext/ThemeContext.js";
 import sadkitty from "./kitty.png"; //tell webpack/parcel this is image file
 
 class Details extends React.Component {
@@ -22,7 +23,6 @@ class Details extends React.Component {
      * Runs only on Mount
      * Then never runs again
      */
-
     pet.animal(this.props.id).then(({ animal }) => {
       if (!animal) {
         this.setState({ notFound: true, loading: false });
@@ -65,18 +65,24 @@ class Details extends React.Component {
       console.log(sadkitty);
       return (
         <div className="details">
-          <div>
-            <img src={sadkitty} alt="sad-kitty" className="sadkitty" />
-            <h2 style={{ color: "#c03440" }}>Details not found.</h2>
-            <h2>
-              <Link to="/" style={{ color: "#c03440" }}>
-                Click here!
-              </Link>{" "}
-              to go back to home page or{" "}
-              <span style={{ color: "#c03440" }}>wait 5 seconds</span> for
-              redirection.
-            </h2>
-          </div>
+          <ThemeContext.Consumer>
+            {([theme]) => (
+              <div>
+                <img src={sadkitty} alt="sad-kitty" className="sadkitty" />
+                <h2 style={{ color: theme.warningColor }}>Details not found</h2>
+                <h2>
+                  <Link to="/" style={{ color: theme.warningColor }}>
+                    Click here!
+                  </Link>{" "}
+                  to go back to home page or{" "}
+                  <span style={{ color: theme.warningColor }}>
+                    wait 5 seconds
+                  </span>{" "}
+                  for redirection.
+                </h2>
+              </div>
+            )}
+          </ThemeContext.Consumer>
         </div>
       );
     }
@@ -98,7 +104,14 @@ class Details extends React.Component {
           <h2>{`${animal} - ${Age ? Age + " -" : ""}  ${
             colors.primary ? colors.primary + " -" : ""
           }  ${breed} - ${location}`}</h2>
-          <button> Adopt {name}</button>
+          <ThemeContext.Consumer>
+            {([theme]) => (
+              <button style={{ backgroundColor: theme.buttonColor }}>
+                {" "}
+                Adopt {name}
+              </button>
+            )}
+          </ThemeContext.Consumer>
           <p>{description}</p>
           <Carousel media={media} />
         </div>

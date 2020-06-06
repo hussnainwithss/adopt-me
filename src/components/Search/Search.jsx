@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import pet, { ANIMALS } from "@frontendmasters/pet";
 import useDropdown from "../useDropdown/useDropdown.jsx";
 import Results from "../Results/Results.jsx";
+import ThemeContext from "../ThemeContext/ThemeContext.js";
 
 const Search = () => {
   const [location, setLocation] = useState("Seattle, WA"); // API Used only supports only Seattle and San fransisco
@@ -9,7 +10,7 @@ const Search = () => {
   const [animal, AnimalDropdown] = useDropdown("Animal", "dog", ANIMALS);
   const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
   const [pets, setPets] = useState([]);
-
+  const [theme] = useContext(ThemeContext);
   /**
    * Async function to request data from the pet Api
    *
@@ -60,7 +61,7 @@ const Search = () => {
         </label>
         <AnimalDropdown />
         <BreedDropdown />
-        <button> Submit </button>
+        <button style={{ backgroundColor: theme.buttonColor }}> Submit </button>
       </form>
       <Results pets={pets} />
     </div>
