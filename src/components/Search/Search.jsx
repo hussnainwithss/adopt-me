@@ -70,10 +70,10 @@ const Search = () => {
           onChange={(e) => setTheme(e.target.value)}
           onBlur={(e) => setTheme(e.target.value)}
         >
+          <option value="#ad343e">Red</option>
           <option value="grey">Grey</option>
           <option value="purple">Purple</option>
           <option value="peru">Peru</option>
-          <option value="#ad343e">Red</option>
           <option value="pink">Pink</option>
           <option value="violet">Violet</option>
           <option value="green">Green</option>

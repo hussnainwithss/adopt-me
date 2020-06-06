@@ -1,9 +1,11 @@
 import React from "react";
-import { Link, navigate } from "@reach/router";
+import { Link, Redirect, navigate } from "@reach/router";
 import pet from "@frontendmasters/pet";
 import Carousel from "../Carousel/Carousel.jsx";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary.jsx";
 import ThemeContext from "../ThemeContext/ThemeContext.js";
+import Modal from "../Modal/Modal.js";
+
 import sadkitty from "./kitty.png"; //tell webpack/parcel this is image file
 
 class Details extends React.Component {
@@ -17,7 +19,7 @@ class Details extends React.Component {
 
   /** Shortcut for intializing state and
    * constructor equivalent to above commented code*/
-  state = { loading: true, notFound: true };
+  state = { loading: true, notFound: true, showModal: false };
   componentDidMount() {
     /** Added Mount life cycle method which fetchs data from Pet API using AJAX request
      * Runs only on Mount
@@ -29,6 +31,7 @@ class Details extends React.Component {
         return;
       }
       this.setState({
+        url: animal.url,
         name: animal.name,
         animal: animal.type,
         location: `${animal.contact.address.city}, ${animal.contact.address.state}`,
@@ -45,7 +48,7 @@ class Details extends React.Component {
 
   componentDidUpdate() {
     if (this.state.notFound) {
-      setTimeout(() => navigate("/"), 5000);
+      setTimeout(() => <Redirect to="/" />, 5000);
     }
   }
 
@@ -62,7 +65,6 @@ class Details extends React.Component {
       );
     }
     if (!this.state.loading & this.state.notFound) {
-      console.log(sadkitty);
       return (
         <div className="details">
           <ThemeContext.Consumer>
@@ -85,6 +87,9 @@ class Details extends React.Component {
       );
     }
 
+    let toggleModal = () => this.setState({ showModal: !this.state.showModal });
+    let adopt = () => navigate(this.state.url);
+
     const {
       animal,
       breed,
@@ -94,6 +99,7 @@ class Details extends React.Component {
       Age,
       colors,
       media,
+      showModal,
     } = this.state;
     return (
       <div className="details">
@@ -104,11 +110,39 @@ class Details extends React.Component {
           }  ${breed} - ${location}`}</h2>
           <ThemeContext.Consumer>
             {([theme]) => (
-              <button style={{ backgroundColor: theme }}> Adopt {name}</button>
+              <button style={{ backgroundColor: theme }} onClick={toggleModal}>
+                {" "}
+                Adopt {name}
+              </button>
             )}
           </ThemeContext.Consumer>
           <p>{description}</p>
           <Carousel media={media} />
+          {showModal ? (
+            <Modal>
+              <div>
+                <h1>Would you like to adopt {name}?</h1>
+                <ThemeContext.Consumer>
+                  {([theme]) => (
+                    <div className="buttons">
+                      <button
+                        style={{ backgroundColor: theme }}
+                        onClick={adopt}
+                      >
+                        Yes {":)"}{" "}
+                      </button>
+                      <button
+                        style={{ backgroundColor: theme }}
+                        onClick={toggleModal}
+                      >
+                        No {":("}{" "}
+                      </button>
+                    </div>
+                  )}
+                </ThemeContext.Consumer>
+              </div>
+            </Modal>
+          ) : null}
         </div>
       </div>
     );
@@ -116,7 +150,6 @@ class Details extends React.Component {
 }
 
 export default function DetailsWithErrorBoundary(props) {
-  console.log("here");
   return (
     <ErrorBoundary>
       <Details {...props} />
