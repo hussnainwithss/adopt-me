@@ -4,7 +4,7 @@
   "description": "Pet adoption app using React.JS",
   "main": "index.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=production parcel build src/index.html --no-minify --public-url /",
+    "build": "parcel build src/index.html --public-url /",
     "clean": "rimraf ./dist",
     "start": "cross-env NODE_ENV=development parcel src/index.html ",
     "dev": "parcel src/index.html",
