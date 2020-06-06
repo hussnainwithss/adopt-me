@@ -34,7 +34,8 @@ body {
 }
 
 .details {
-  width: 1100px;
+  text-align: center;
+  width: 80%;
   margin: 0 auto;
   background-color: #d9c148;
   padding: 15px;
@@ -55,7 +56,11 @@ body {
   width: 100px;
   min-height: 100px;
 }
-
+.sadkitty {
+  margin: 20px auto 0px;
+  max-width: 10%;
+  max-height: 10%;
+}
 .info {
   float: left;
   width: 80%;
@@ -145,13 +150,14 @@ header {
 .carousel {
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
   align-items: center;
-  height: 400px;
   margin-top: 8px;
 }
 
 .carousel > img {
-  max-width: 45%;
+  /* border-radius: 50%; */
+  max-width: 500px;
   max-height: 400px;
 }
 
@@ -258,7 +264,7 @@ header {
   position: absolute;
   width: 32px;
   height: 32px;
-  background: #333;
+  background: #c03440;
   animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .lds-heart div:after,
@@ -268,7 +274,7 @@ header {
   display: block;
   width: 32px;
   height: 32px;
-  background: #333;
+  background: #c03440;
 }
 .lds-heart div:before {
   left: -24px;
@@ -303,9 +309,8 @@ header {
   header {
     display: flex;
     align-content: center;
-    justify-content: space-between;
     width: 95%;
-    margin: 0 auto;
+    margin: 10px auto;
     padding: 20px 0px 0px 0px;
   }
 
@@ -349,6 +354,9 @@ header {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  .carousel-smaller {
+    display: flex;
   }
 }
 
