@@ -5,7 +5,7 @@ import { Router, Link } from "@reach/router";
 import Logo from "./components/Logo/Logo.jsx";
 import Search from "./components/Search/Search.jsx";
 import Details from "./components/Details/Details.jsx";
-import "babel-polyfill";
+import "babel-polyfill"; //transpiles Modern JS functions like async etc. for incompatible borwsers
 
 const App = () => {
   return (
