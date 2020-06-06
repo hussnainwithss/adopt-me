@@ -10,9 +10,7 @@ import "babel-polyfill";
 const App = () => {
   return (
     <div>
-      <div>
-        <Logo />
-      </div>
+      <Logo />
       <Router>
         <Details path="/details/:id" />
 
