@@ -1,8 +1,5 @@
 import { createContext } from "react";
 
-const ThemeContext = createContext([
-  { buttonColor: "#ad343e", warningColor: "#c03440" },
-  () => {},
-]);
+const ThemeContext = createContext(["#ad343e", () => {}]);
 
 export default ThemeContext;

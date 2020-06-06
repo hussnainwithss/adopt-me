@@ -10,7 +10,7 @@ const Search = () => {
   const [animal, AnimalDropdown] = useDropdown("Animal", "dog", ANIMALS);
   const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
   const [pets, setPets] = useState([]);
-  const [theme] = useContext(ThemeContext);
+  const [theme, setTheme] = useContext(ThemeContext);
   /**
    * Async function to request data from the pet Api
    *
@@ -37,7 +37,7 @@ const Search = () => {
         const breedStrings = apiBreeds.map(({ name }) => name);
         setBreeds(breedStrings);
       },
-      (err) => console.error(err)
+      (err) => console.Error(err)
     );
   }, [animal, setBreed, setBreeds]); // dependency array makes sure useEffect is only called when any of these change
 
@@ -45,11 +45,12 @@ const Search = () => {
     <div className="search-params">
       <form
         onSubmit={(e) => {
-          console.log("requesting API");
           e.preventDefault();
           requestPets();
         }}
       >
+        <h3 style={{ textAlign: "center" }}> Search Info </h3>
+
         <label htmlFor="location">
           Location
           <input
@@ -61,7 +62,24 @@ const Search = () => {
         </label>
         <AnimalDropdown />
         <BreedDropdown />
-        <button style={{ backgroundColor: theme.buttonColor }}> Submit </button>
+        <button style={{ backgroundColor: theme }}> Submit </button>
+        <h3 style={{ textAlign: "center" }}> App Theme </h3>
+        <label htmlFor="theme">ButtonColor</label>
+        <select
+          value={theme}
+          onChange={(e) => setTheme(e.target.value)}
+          onBlur={(e) => setTheme(e.target.value)}
+        >
+          <option value="grey">Grey</option>
+          <option value="purple">Purple</option>
+          <option value="peru">Peru</option>
+          <option value="#ad343e">Red</option>
+          <option value="pink">Pink</option>
+          <option value="violet">Violet</option>
+          <option value="green">Green</option>
+          <option value="black">Black</option>
+          <option value="darkblue">Dark Blue</option>
+        </select>
       </form>
       <Results pets={pets} />
     </div>

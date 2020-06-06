@@ -11,7 +11,7 @@ const App = () => {
   // a color can be passed to this hook to apply
   // that color as default theme
   // i.e const themeHook = useState("peru");
-  const themeHook = useState({ buttonColor: "peru", warningColor: "#c03440" });
+  const themeHook = useState("");
 
   return (
     <React.StrictMode>

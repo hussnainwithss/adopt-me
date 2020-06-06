@@ -69,16 +69,14 @@ class Details extends React.Component {
             {([theme]) => (
               <div>
                 <img src={sadkitty} alt="sad-kitty" className="sadkitty" />
-                <h2 style={{ color: theme.warningColor }}>Details not found</h2>
+                <h2 style={{ color: "#c03440" }}>Details not found</h2>
                 <h2>
-                  <Link to="/" style={{ color: theme.warningColor }}>
+                  <Link to="/" style={{ color: "#c03440" }}>
                     Click here!
                   </Link>{" "}
                   to go back to home page or{" "}
-                  <span style={{ color: theme.warningColor }}>
-                    wait 5 seconds
-                  </span>{" "}
-                  for redirection.
+                  <span style={{ color: "#c03440" }}>wait 5 seconds</span> for
+                  redirection.
                 </h2>
               </div>
             )}
@@ -106,10 +104,7 @@ class Details extends React.Component {
           }  ${breed} - ${location}`}</h2>
           <ThemeContext.Consumer>
             {([theme]) => (
-              <button style={{ backgroundColor: theme.buttonColor }}>
-                {" "}
-                Adopt {name}
-              </button>
+              <button style={{ backgroundColor: theme }}> Adopt {name}</button>
             )}
           </ThemeContext.Consumer>
           <p>{description}</p>
